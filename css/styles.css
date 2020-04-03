@@ -2,7 +2,13 @@ body{
     background: #343d46;
   }
    
-/*Buscador*/
+h1 {
+    font-size: 600%;
+    color: #E50913;
+}
+
+
+/*-----------------------------Buscador-----------------------------*/
 .container-4 input#search{
   width: 300px;
   height: 50px;
@@ -65,4 +71,4 @@ body{
 .container-4:hover button.icon:hover{
     background: white;
 }
- /*Fin buscador*/
+ /*-----------------------------Fin buscador-----------------------------*/
