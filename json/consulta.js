@@ -1,31 +1,4 @@
 
-/*var datos = http://www.omdbapi.com/?apikey=99cef5c3&t=Batman
-
-function apiCall(movie) {
-  var movie = document.getElementById("search");
-    $.getJSON('https://www.omdbapi.com/?t=' + movie + 
-  '&apikey=99cef5c3').then(function(response) {
-  console.log(response);
-  var title = response.Title;
-  var image = response.Poster;
-  genre = response.Genre;
-  plot = response.Plot;
-  
-  var arrGenres = genre.split(', ');
-  console.log(arrGenres);
-
-  if (title !== 'N/A') {
-    $('.container-genre').append('<p>' + title + '</p>');
-    $('#movie').append($('.container-genre'));
-  }
-  });
-  }
-  $('#searchForm').on('submit', function() {
-    var text = $('#titleFld').val();
-    apiCall(text);
-  });
-
-*/
 /*
 function apiCall() {
     var movie = document.getElementById("search").value ;
@@ -42,7 +15,7 @@ function apiCall() {
         });
 };
 */
-
+/*
 
 $(document).ready(function () {
     var movie = document.getElementById("search").value ;
@@ -50,6 +23,7 @@ $(document).ready(function () {
     document.getElementById("co").innerHTML=url;
     $.getJSON(url,
     function (json) {
+        
         var tr;
         tr = $('<tr/>');
         tr.append("<td><img src=" + json.Poster + " width='200' height='297'></td>");
@@ -64,12 +38,79 @@ $(document).ready(function () {
         $('#imdb').append(tr);
     });
 });
+*/
+function url() {
+    var movie = document.getElementById("search").value; //Recupera el valor de entrada del input con id "search"
+    var getURL = "https://www.omdbapi.com/?apikey=99cef5c3&t=" + movie + "&plot=full"; //Concatena la url con el valor recuperado
+    //console.log(getURL);
+    return getURL; //Devuelve un valor String, es la url completa
+}
 
 
 
 function apiCall() {
+    /////OBTIENE EL JSON DE LA URL
+    //console.log(typeof (url())); //Tipo de dato de retorna la funcion url()
+    var Httpreq = new XMLHttpRequest(); // a new request
+    Httpreq.open("GET", url(), false);
+    Httpreq.send(null);
+    var text = Httpreq.responseText; //Guarda el JSON en la variable text
+
+    /*Al recibir datos de un servidor web, los datos siempre son un String. Con parse los datos se convierten en un objeto JavaScript.*/
+    var obj = JSON.parse(text);
+    
+    console.log("ESTE ES EL JSON STRING: " + typeof (text));
+    console.log("ESTE ES EL JSON OBJETO: " + typeof (obj));
+    console.log(text);
+    console.log("----------------------");
+    console.log(obj);
+    console.log(Object.keys(obj).length);
+    console.log(Object.keys(obj));
+    console.log(Object.keys(obj.Ratings));
+    //document.getElementById("co").innerHTML = Object.keys(obj);
+    //document.getElementById("co").innerHTML = JSON.stringify(obj);
+
+    var arr = [obj];
+    var alm = "";
+
+    console.log("Vector" + Object.values(obj));
+    console.log("Prueba vector " + Object.getOwnPropertyNames(obj));
+
+    /*for(var i=0; i < obj.length; i++){
+        alm +="<tr>"+
+        "<td><img src="+obj[i].Poster+"></td>" +
+        "<td>"+obj[i].Title + "</td>" +
+        "<td>"+obj[i].Year + "</td>" +
+        "<td>"+obj[i].Rated + "</td>" +
+        "<td>"+obj[i].Runtime + "</td>" +
+        "<td>"+obj[i].Genre + "</td>" +
+        "<td>"+obj[i].Director+ "</td>" +
+        "<td>"+obj[i].Actors+ "</td>" +
+        "<td>"+obj[i].Plot + "</td> " +
+
+        "</tr>";
+    }
+    /*alm +="<tr>"+
+        "<td><img src="+url.Poster+"></td>" +
+        "<td>"+url.title + "</td>" +
+        "<td>"+url.Year + "</td>" +
+        "<td>"+url.Rated + "</td>" +
+        "<td>"+url.Runtime + "</td>" +
+        "<td>"+url.Genre + "</td>" +
+        "<td>"+url.Director+ "</td>" +
+        "<td>"+url.Actors+ "</td>" +
+        "<td>"+url.Plot + "</td> " +
+
+        "</tr>";*/
+    //document.getElementById("co").innerHTML = url();
+}
+
+
+/*
+function apiCall() {
     var movie = document.getElementById("search").value ;
     var url = "https://www.omdbapi.com/?apikey=99cef5c3&s="+ movie;
+    var detalles ="";
     $.get("https://www.omdbapi.com/?s=" + movie + "&apikey=99cef5c3", function (rawdata) {
         var rawstring = JSON.stringify(rawdata);
         data = JSON.parse(rawstring);
@@ -81,22 +122,4 @@ function apiCall() {
         document.getElementById("replica").innerHTML = "<h2>" + title + "</h2><br> <img src= '" + posterurl + "'><br><p> Year Released:" + year + "</p> <br> <p> IMDB page: <a href='" + imdburl + "'target='_blank'>" + imdburl + "</a></p>";
     });
 }
-
-/*
-
-function cargarDatos()
-{
-    var detalles="";
-    for(var i=0; i < datos.length; i++){
-        detalles +="<tr>"+
-        "<td>"+datos[i].id + "</td> " +
-        "<td>"+datos[i].first_name + "</td>" +
-        "<td>"+datos[i].last_name + "</td>" +
-        "<td>"+datos[i].email + "</td>" +
-        "<td>"+datos[i].gender + "</td>" +
-        "<td><img src="+datos[i].image+"></td>" +
-
-        "</tr>";
-    }
-    document.getElementById("tablaDatosPersonalesDetalles").innerHTML=detalles;
-}*/
+*/
