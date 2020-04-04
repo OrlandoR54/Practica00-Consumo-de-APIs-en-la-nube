@@ -15,30 +15,7 @@ function apiCall() {
         });
 };
 */
-/*
 
-$(document).ready(function () {
-    var movie = document.getElementById("search").value ;
-    var url = "https://www.omdbapi.com/?apikey=99cef5c3&s="+ movie;
-    document.getElementById("co").innerHTML=url;
-    $.getJSON(url,
-    function (json) {
-        
-        var tr;
-        tr = $('<tr/>');
-        tr.append("<td><img src=" + json.Poster + " width='200' height='297'></td>");
-        tr.append("<td>" + json.Title + "</td>");
-        tr.append("<td>" + json.Year + "</td>");
-        tr.append("<td>" + json.Rated + "</td>");
-        tr.append("<td>" + json.Runtime + "</td>");
-        tr.append("<td>" + json.Genre + "</td>");
-        tr.append("<td>" + json.Director + "</td>");
-        tr.append("<td>" + json.Actors + "</td>");
-        tr.append("<td>" + json.Plot + "</td>");
-        $('#imdb').append(tr);
-    });
-});
-*/
 function url() {
     var movie = document.getElementById("search").value; //Recupera el valor de entrada del input con id "search"
     var getURL = "https://www.omdbapi.com/?apikey=99cef5c3&t=" + movie + "&plot=full"; //Concatena la url con el valor recuperado
@@ -68,13 +45,46 @@ function apiCall() {
     console.log(Object.keys(obj));
     console.log(Object.keys(obj.Ratings));
     //document.getElementById("co").innerHTML = Object.keys(obj);
-    //document.getElementById("co").innerHTML = JSON.stringify(obj);
 
-    var arr = [obj];
+    var arrCab = Object.getOwnPropertyNames(obj);
+    var arrDet = Object.values(obj);
+
+    console.log("Vector" + arrDet);
+    console.log("Prueba vector " + arrCab);
+    
+     //Bucle ForEach para mostrar los resultados de la Tabla cabecera
     var alm = "";
+    arrCab.forEach(element => {
+        //Evita mostrar los titulos de Response y Poster y solo muestra los demas resultados
+        if (element == "Response" || element == "Poster") {
+            
+        } else {
+            alm += 
+            "<th>" + element + "</th>";   
+        } 
+    });
+    document.getElementById("moviesCabecera").innerHTML = "<th> </th>" + alm;
+    
+    
+    //Bucle ForEach para mostrar los detalles en la Tabla detalle
+    var busca = arrDet[13]; //obtiene el dato en la posicion 13 y lo guarda
+    var detalles = "";
+    arrDet.forEach(element => {
+        /*arrDet.forEach(imgs => {
+            if (imgs == busca) {
+                document.getElementById("container").innerHTML = "<img src="+ imgs + ">";
+            }
+        });*/
 
-    console.log("Vector" + Object.values(obj));
-    console.log("Prueba vector " + Object.getOwnPropertyNames(obj));
+         //Evita mostrar datos innecesarios
+        if (element == "True" || element == busca) {
+           
+        }else {
+            detalles += "<td>" + element + "</td>";
+        }
+        
+    });
+    document.getElementById("moviesDetalles").innerHTML = "<td><img src=" + busca + "></td>" + detalles;
 
     /*for(var i=0; i < obj.length; i++){
         alm +="<tr>"+
@@ -89,37 +99,5 @@ function apiCall() {
         "<td>"+obj[i].Plot + "</td> " +
 
         "</tr>";
-    }
-    /*alm +="<tr>"+
-        "<td><img src="+url.Poster+"></td>" +
-        "<td>"+url.title + "</td>" +
-        "<td>"+url.Year + "</td>" +
-        "<td>"+url.Rated + "</td>" +
-        "<td>"+url.Runtime + "</td>" +
-        "<td>"+url.Genre + "</td>" +
-        "<td>"+url.Director+ "</td>" +
-        "<td>"+url.Actors+ "</td>" +
-        "<td>"+url.Plot + "</td> " +
-
-        "</tr>";*/
-    //document.getElementById("co").innerHTML = url();
+    }*/
 }
-
-
-/*
-function apiCall() {
-    var movie = document.getElementById("search").value ;
-    var url = "https://www.omdbapi.com/?apikey=99cef5c3&s="+ movie;
-    var detalles ="";
-    $.get("https://www.omdbapi.com/?s=" + movie + "&apikey=99cef5c3", function (rawdata) {
-        var rawstring = JSON.stringify(rawdata);
-        data = JSON.parse(rawstring);
-        var title = data.Search[0].Title;
-        var year = data.Search[0].Year;
-        var imdburl = "https://www.imdb.com/title/" + data.Search[0].imdbID + "/";
-
-        var posterurl = data.Search[0].Poster;
-        document.getElementById("replica").innerHTML = "<h2>" + title + "</h2><br> <img src= '" + posterurl + "'><br><p> Year Released:" + year + "</p> <br> <p> IMDB page: <a href='" + imdburl + "'target='_blank'>" + imdburl + "</a></p>";
-    });
-}
-*/
