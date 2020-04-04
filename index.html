@@ -18,9 +18,8 @@
 
     <div class="box">
         <div class="container-4">
-            <input type="search" id="search" placeholder="Buscar..." />
+            <input type="search" id="search" onkeyup="url()" placeholder="Buscar..." />
             <button type="submit" class="icon" onclick="apiCall()"><i class="fa fa-search"></i></button>
-            
         </div>
     </div>
     <table id="imdb" class="data">
@@ -40,12 +39,12 @@
         <tbody id="moviesDetalles">
 
         </tbody>
-        <div class="container" id="replica">
-            
-        </div>
         
     </table>
-    <p id="co">  </p>
+    <div class="container">
+        <img src="https://www.townoftazewell.org/wp-content/gallery/misc/no-image-found.jpg" alt="" srcset="">
+    </div>
+    <div id="co">  </div>
 </body>
 
 </html>
