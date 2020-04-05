@@ -26,63 +26,83 @@ function apiCall() {
 
     console.log("ESTE ES EL JSON OBJETO: " + typeof (obj));
 
+    console.log("Tipo de ");
     console.log(Object.keys(obj))
     console.log(typeof (url()));
-    console.log(url().search("i="));
+
+
+    /*Condicion para obtener los datos segun el ID o el nombre de la pelicula */
+    console.log(url().search("i=")); //Obtiene la posicion de "i+"
     if (url().search("i=") == 41) {
         var arrCab = Object.getOwnPropertyNames(obj);
-    var arrDet = Object.values(obj);
+        var arrDet = Object.keys(obj);
+        console.log(typeof (url()));
+        console.log("Vector" + arrDet);
+        console.log("Prueba vector " + arrCab);
 
-    console.log("Vector" + arrDet);
-    console.log("Prueba vector " + arrCab);
-    
-    //Bucle ForEach para mostrar los resultados de la Tabla cabecera
-    var alm = "";
-    arrCab.forEach(element => {
-        //Evita mostrar los titulos de Response y Poster y solo muestra los demas resultados
-        if (element == "Response" || element == "Poster") {
-            
-        } else {
-            alm += 
-            "<th>" + element + "</th>";   
-        } 
-    });
-    document.getElementById("moviesCabecera").innerHTML = "<th> </th>" + alm;
-    
-    
-    //Bucle ForEach para mostrar los detalles en la Tabla detalle
-    var busca = arrDet[13]; //obtiene el dato en la posicion 13 y lo guarda
-    var detalles = "";
-    arrDet.forEach(element => {
-        /*arrDet.forEach(imgs => {
-            if (imgs == busca) {
-                document.getElementById("container").innerHTML = "<img src="+ imgs + ">";
-            }
-        });*/
+        var busca = arrDet[13]; //obtiene el dato en la posicion 13 y lo guarda
 
-         //Evita mostrar datos innecesarios
-        if (element == "True" || element == busca) {
-           
-        }else {
-            detalles += "<td>" + element + "</td>";
+        var alm = "";
+        for (var i = 0; i < arrDet.length; i++) {
+            alm +=
+                "<th>Title</th>" +
+                "<td>" + arrDet[i].Title + "</td>" +
+                "<th>Genre</th>" +
+                "<td>" + arrDet[i].Genre + "</td>" +
+                "<th>Language</th>" +
+                "<td>" + arrDet[i].Language + "</td>" +
+                "<th>imdbRating</th>" +
+                "<td>" + arrDet[i].imdbRating + "</td>" +
+                "<th>BoxOffice</th>" +
+                "<td>" + arrDet[i].BoxOffice + "</td></tr><tr>" +
+                "<th>Year</th>" +
+                "<td>" + arrDet[i].Year + "</td>" +
+                "<th>Director</th>" +
+                "<td>" + arrDet[i].Director + "</td>" +
+                "<th>Country</th>" +
+                "<td>" + arrDet[i].Country + "</td>" +
+                "<th>imdbVotes</th>" +
+                "<td>" + arrDet[i].imdbVotes + "</td>" +
+                "<th>Production</th>" +
+                "<td>" + arrDet[i].Production + "</td></tr><tr>" +
+                "<th>Rated</th>" +
+                "<td>" + arrDet[i].Rated + "</td>" +
+                "<th>Writer</th>" +
+                "<td>" + arrDet[i].Writer + "</td>" +
+                "<th>Awards</th>" +
+                "<td>" + arrDet[i].Awards + "</td>" +
+                "<th>imdbID</th>" +
+                "<td>" + arrDet[i].imdbID + "</td>" +
+                "<th>Websit</th>" +
+                "<td>" + arrDet[i].Websit + "</td></tr>";
+
         }
-    });
-    document.getElementById("moviesDetalles").innerHTML = "<td><img src=" + busca + "></td>" + detalles;
+        document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='5'><img src=" + busca + "></th>" + alm;
+        //Bucle ForEach para mostrar los resultados de la Tabla cabecera
+        /*arrCab.forEach(element => {
+            //Evita mostrar los titulos de Response y Poster y solo muestra los demas resultados
+            if (element == "Response" || element == "Poster" || element == "Plot") {
 
-    /*for(var i=0; i < obj.length; i++){
-        alm +="<tr>"+
-        "<td><img src="+obj[i].Poster+"></td>" +
-        "<td>"+obj[i].Title + "</td>" +
-        "<td>"+obj[i].Year + "</td>" +
-        "<td>"+obj[i].Rated + "</td>" +
-        "<td>"+obj[i].Runtime + "</td>" +
-        "<td>"+obj[i].Genre + "</td>" +
-        "<td>"+obj[i].Director+ "</td>" +
-        "<td>"+obj[i].Actors+ "</td>" +
-        "<td>"+obj[i].Plot + "</td> " +
+            } else {
+                alm +=
+                    "<th>" + element + "</th>";
+            }
+        });
+        document.getElementById("moviesCabecera").innerHTML = "<th> </th>" + alm ;
+*/
 
-        "</tr>";
-    }*/
+        /*//Bucle ForEach para mostrar los detalles en la Tabla detalle
+        
+        var detalles = "";
+        arrDet.forEach(element => {
+            //Evita mostrar datos innecesarios
+            if (element == "True" || element == busca || element == arrDet[9]) {
+
+            } else {
+                detalles += "<td>" + element + "</td>";
+            }
+        });
+        document.getElementById("moviesDetalles").innerHTML = "<td><img src=" + busca + "></td>" + detalles;*/
 
     } else {
         var arrAll = Object.values(obj.Search);
