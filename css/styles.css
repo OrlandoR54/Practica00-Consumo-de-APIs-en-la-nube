@@ -72,3 +72,25 @@ h1 {
     background: white;
 }
  /*-----------------------------Fin buscador-----------------------------*/
+
+
+/*-------------------------------IMAGENES-------------------------------*/
+img {
+    border: 2px solid black;
+    border-radius: 20px;
+    opacity: 0.5;
+    transition: 0.25s ease-in-out;
+}
+
+img:hover {
+    opacity: 1;
+}
+
+/*-----------------------------Fin Imagenes-----------------------------*/
+ td, th{
+    height: 55px;
+    text-align: left;
+ }
+ td {
+    width: 420px;
+ }
