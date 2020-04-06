@@ -28,14 +28,4 @@
     font-weight: 300;
 }
 
-img {
-    border: 2px solid black;
-    border-radius: 20px;
-    opacity: 0.5;
-    transition: 0.25s ease-in-out;
-}
-
-img:hover {
-    opacity: 1;
-}
 
