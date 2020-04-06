@@ -71,7 +71,7 @@ h1 {
 .container-4:hover button.icon:hover{
     background: white;
 }
- /*-----------------------------Fin buscador-----------------------------*/
+ /*---------------------------------------------------------------------*/
 
 
 /*-------------------------------IMAGENES-------------------------------*/
@@ -86,11 +86,31 @@ img:hover {
     opacity: 1;
 }
 
-/*-----------------------------Fin Imagenes-----------------------------*/
- td, th{
+/*----------------------------------------------------------------------*/
+/*--------------------------------TABLAS--------------------------------*/ 
+td, th{
     height: 55px;
     text-align: left;
  }
  td {
     width: 420px;
  }
+/*--------------------------Scroll Personalizado--------------------------*/
+body::-webkit-scrollbar {
+	width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: #E50913;
+}
+/*body::-webkit-scrollbar {
+	width: 10px;
+	background: #021b79;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: rgba(255,255,255, .2);
+	border-radius: 10px;
+	border-right: 2px solid #021b79;
+}*/
+/*------------------------------------------------------------------------*/
