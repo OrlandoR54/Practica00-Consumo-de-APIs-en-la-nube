@@ -12,46 +12,59 @@
 </head>
 
 <body>
-    <div class="titulo" id="titulo">
-        <h1>Metflix</h1>
-    </div>
+    <div class="content">
+        <div class="titulo" id="titulo">
+            <h1>Metflix</h1>
+        </div>
 
-    <div class="box">
-        <div class="container-4">
-            <input type="search" id="search" onkeyup="url()" placeholder="Buscar..." />
-            <button type="submit" class="icon" onclick="apiCall()"><i class="fa fa-search"></i></button>
+        <div class="box">
+            <div class="container-4">
+                <input type="search" id="search" onkeyup="url()" placeholder="Buscar..." />
+                <button type="submit" class="icon" onclick="apiCall()"><i class="fa fa-search"></i></button>
+            </div>
         </div>
     </div>
-    <table id="imdb" class="data">
-        <thead>
-            <tr id="moviesCabecera">
+    <div class="containerTablas">
+        <section class="data_1">
+            <table id="imdb" class="tabla_1">
 
-            </tr>
-        </thead>
-        <tbody id="moviesDetalles" class="detalles">
+                <tbody id="moviesDetalles" class="detalles">
 
-        </tbody>
+                </tbody>
 
-        <tfoot>
-            <tr>
-                <td colspan="4">
-                    <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a href="#">2</a> <a
-                            href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-    <table>
-        <tbody id="moviesDetallesPart2">
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a
+                                    href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </section>
 
-        </tbody>
-    </table>
-    <table>
-        <tbody id="moviesDetallesPart3">
+        <section class="data_2">
+            <table class="tabla_2" id="tabla_2">
+                <tbody id="moviesDetallesPart2">
 
-        </tbody>
-    </table>
+                </tbody>
+            </table>
+        </section>
+        <section class="data_3">
+            <table class="tabla_3" id="tabla_3">
+                <tbody id="moviesDetallesPart3">
 
+                </tbody>
+            </table>
+        </section>
+        <section class="data_4">
+            <table class="tabla_4" id="tabla_4">
+                <tbody id="moviesDetallesPart4">
+
+                </tbody>
+            </table>
+        </section>
+    </div>
 </body>
 
 </html>
