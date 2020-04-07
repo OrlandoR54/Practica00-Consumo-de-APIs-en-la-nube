@@ -46,19 +46,31 @@ function apiCall() {
 
         //var arrDet = "[" + text + "]";
         // console.log("Vector prueba.... " + arrDet);
-        var busca = arrDet[13]; //obtiene el dato de la imagen en la posicion 13 y lo guarda
+        var poster = arrDet[13]; //obtiene el dato de la imagen en la posicion 13 y lo guarda
+        var ratings = arrDet[14];
 
-
+        /*Bucle para obtener los datos del vector y mostrarlos en la primera tabla */
         for (let i = 0; i < 9; i++) {
             alm +=
                 "<th>" + arrCab[i] + "</th>" +
                 "<td>" + arrDet[i] + "</td></tr>";
         }
-        document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=" + busca + "></th>" + alm;
+        document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=" + poster + "></th>" + alm;
 
-        for (let i = 9; i < 19; i++) {
-            if (arrCab[i] == "Poster" || arrDet[i] == busca) {
+        /*Bucle para obtener los datos del vector y mostrarlos en la segunda tabla */
+        for (let i = 10; i < 19; i++) {
+            if (arrCab[i] == "Poster" || arrDet[i] == poster) {
 
+            } else if (arrDet[i] === ratings) {
+                alm2 += "<tr><th rowspan='" + (((ratings.length) * 2) + 1) + "'>Ratings</th>";
+                for (let i = 0; i < ratings.length; i++) {
+                    alm2 +=
+                        "<tr><th>Source</th>" +
+                        "<td>" + ratings[i].Source + "</td></tr>" +
+                        "<tr><th>Value</th>" +
+                        "<td>" + ratings[i].Value + "</td></tr>";
+                }
+                alm2 += "</tr>"
             } else {
                 alm2 +=
                     "<tr><th>" + arrCab[i] + "</th>" +
@@ -67,22 +79,26 @@ function apiCall() {
         }
         document.getElementById("moviesDetallesPart2").innerHTML = alm2;
 
+        /*Bucle para obtener los datos del vector y mostrarlos en la tercera tabla */
         for (let i = 19; i < 24; i++) {
             alm3 +=
                 "<tr><th>" + arrCab[i] + "</th>" +
                 "<td>" + arrDet[i] + "</td></tr>";
         }
         document.getElementById("moviesDetallesPart3").innerHTML = alm3;
+        document.getElementById("moviesDetallesPart4").innerHTML = "<tr><th>" + arrCab[9] + "</th>" + "<td style='width: 800px; height: 50px;'>" + arrDet[9] + "</td></tr>";
 
     } else {
 
-        document.getElementById("moviesCabecera").innerHTML = "<th> </th>";
+        
+        document.getElementById("tabla_2").innerHTML = "<tbody id='moviesDetallesPart2'> </tbody>"; //Limpia la cabecera y detalle de la segunda tabla
+        document.getElementById("tabla_3").innerHTML = "<tbody id='moviesDetallesPart3'> </tbody>"; //Limpia la cabecera y detalle de la tercera tabla
 
         var arrAll = Object.values(obj.Search);
         console.log(arrAll);
 
 
-        //Bucle For para mostrar los resultados de la Tabla
+        //Bucle For para mostrar los resultados en la Tabla
         var con = "";
         for (var i = 0; i < arrAll.length; i++) {
             /*Condicional para sustituir una imagen vacia por otra */
@@ -96,7 +112,7 @@ function apiCall() {
                     "<tr><th>imdbID</th>" +
                     "<td>" + arrAll[i].imdbID + "</td></tr>" +
                     "<tr><th>Type</th>" +
-                    "<td>" + arrAll[i].Type + "</td></tr> <br>";
+                    "<td>" + arrAll[i].Type + "</td></tr>";
             } else {
                 con +=
                     "<tr> <th rowspan='4'><img src=" + arrAll[i].Poster + "></th>" +
@@ -107,7 +123,7 @@ function apiCall() {
                     "<tr><th>imdbID</th>" +
                     "<td>" + arrAll[i].imdbID + "</td></tr>" +
                     "<tr><th>Type</th>" +
-                    "<td>" + arrAll[i].Type + "</td></tr> <br>";
+                    "<td>" + arrAll[i].Type + "</td></tr>";
             }
         }
         document.getElementById("moviesDetalles").innerHTML = con; //Muestra los resultados almacenados en la variable con, en formato HTML
