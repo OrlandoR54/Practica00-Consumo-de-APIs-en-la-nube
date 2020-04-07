@@ -89,12 +89,56 @@ img:hover {
 /*----------------------------------------------------------------------*/
 /*--------------------------------TABLAS--------------------------------*/ 
 td, th{
-    height: 55px;
     text-align: left;
  }
- td {
-    width: 420px;
+
+ th {
+     width: 80px;
  }
+
+.tabla_1 td {
+    width: 400px;
+ }
+
+.tabla_2, .data_2{
+    width: 300px;
+}
+
+.tabla_2 th {
+    width: 80px;
+    height: 20px;
+}
+
+.tabla_2 td {
+    width: 200px;
+}
+
+.tabla_3 tr{
+    width: 130px;
+}
+
+.tabla_3 td{
+    width: 15%;
+}
+
+.tabla_3{
+    width: 10%;
+}
+
+.data_3{
+    width: 22%;
+}
+
+.tabla_4 {
+    width: fit-content;
+}
+
+.data_1, .data_2, .data_3, .data_4{
+    margin: 7px;
+}
+
+
+
 /*--------------------------Scroll Personalizado--------------------------*/
 body::-webkit-scrollbar {
 	width: 10px;
