@@ -90,7 +90,6 @@ function apiCall() {
 
     } else {
 
-        
         document.getElementById("tabla_2").innerHTML = "<tbody id='moviesDetallesPart2'> </tbody>"; //Limpia la cabecera y detalle de la segunda tabla
         document.getElementById("tabla_3").innerHTML = "<tbody id='moviesDetallesPart3'> </tbody>"; //Limpia la cabecera y detalle de la tercera tabla
 
