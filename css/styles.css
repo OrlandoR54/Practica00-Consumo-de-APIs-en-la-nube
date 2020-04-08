@@ -142,7 +142,6 @@ td, th{
 }
 
 
-
 /*--------------------------Scroll Personalizado--------------------------*/
 body::-webkit-scrollbar {
 	width: 10px;
@@ -162,24 +161,29 @@ body::-webkit-scrollbar-thumb {
 	border-right: 2px solid #021b79;
 }*/
 /*------------------------------------------------------------------------*/
+/*-------------------------------PAGINACION-------------------------------*/
 .pagination {
-    display: inline-block;
+    /*display: inline-block;*/
+    margin-left: 600px;
   }
   
-.pagination a {
+/*.foot{
+    padding-left: 90px;
+}*/
+.pagination .flechas {
     color: black;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
 }
   
-.pagination a.active {
+.pagination .flechas.active {
     background-color: #E50913;
     color: white;
     border-radius: 5px;
 }
   
-.pagination a:hover:not(.active) {
-    background-color: #ddd;
+.pagination .flechas:hover:not(.active) {
+    background-color: #E50913;
     border-radius: 5px;
 }
