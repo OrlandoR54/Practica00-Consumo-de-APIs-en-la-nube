@@ -9,18 +9,37 @@
     <link rel="stylesheet" href="css/styles.css">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="json/consulta.js"></script>
+    <script>var i = 1;
+        function next() {
+            if (i < 100) {
+                i++;
+                console.log("letra i " + i);
+                return i;
+            }
+        }
+        function previous() {
+            if (i > 0) {
+                i--;
+                console.log("letra i " + i);
+                return i;
+            }
+        }   
+    </script>
 </head>
 
 <body>
-    <div class="content">
-        <div class="titulo" id="titulo">
-            <h1>Metflix</h1>
-        </div>
 
-        <div class="box">
-            <div class="container-4">
-                <input type="search" id="search" onkeyup="url()" placeholder="Buscar..." />
-                <button type="submit" class="icon" onclick="apiCall()"><i class="fa fa-search"></i></button>
+    <div class="content">
+        <div class="animacion" id="animacion">
+            <div class="titulo" id="titulo">
+                <h1>Metflix</h1>
+            </div>
+
+            <div class="box">
+                <div class="container-4">
+                    <input type="search" id="search" onkeyup="url()" placeholder="Buscar..." />
+                    <button type="submit" class="icon" onclick="apiCall(1)"><i class="fa fa-search"></i></button>
+                </div>
             </div>
         </div>
     </div>
@@ -31,12 +50,14 @@
                 <tbody id="moviesDetalles" class="detalles">
 
                 </tbody>
-
-                <tfoot>
+                <tfoot id="paginacion" class="paginacion">
+                    <input type="button" onclick="apiCall(previous())" value="<<">
+                    <input type="button" onclick="apiCall(next())" value=">>">
                     <tr>
                         <td colspan="4">
-                            <div class="links"><a href="#">&laquo;</a> <a class="active" href="#">1</a> <a
-                                    href="#">2</a> <a href="#">3</a> <a href="#">4</a> <a href="#">&raquo;</a></div>
+                            <div class="pagination" id="pagination">
+
+                            </div>
                         </td>
                     </tr>
                 </tfoot>
