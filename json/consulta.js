@@ -31,6 +31,7 @@ function transform(cont) {
     //console.log("Objeto " + obj);
 }
 
+var pages = 0; //variable global
 
 /*Funcion para obtener las consultas de varias peliculas */
 function apiCall(cont) {
@@ -44,23 +45,32 @@ function apiCall(cont) {
         console.log(arrDet); //Muestra en consola el vector donde estan los resultados del objeto JSON
         //console.log("Prueba vector: " + arrCab);
 
+        document.getElementById("pagination").innerHTML = " ";
 
         var alm = "";
         var alm2 = "";
         var alm3 = "";
 
-        //var arrDet = "[" + text + "]";
+        
         // console.log("Vector prueba.... " + arrDet);
+        
         var poster = arrDet[13]; //obtiene el dato de la imagen en la posicion 13 y lo guarda
         var ratings = arrDet[14];
 
+            
         /*Bucle para obtener los datos del vector y mostrarlos en la primera tabla */
         for (let i = 0; i < 9; i++) {
             alm +=
                 "<th>" + arrCab[i] + "</th>" +
                 "<td>" + arrDet[i] + "</td></tr>";
         }
-        document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=" + poster + "></th>" + alm;
+        if (arrDet[13] == "N/A") {
+            document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=https://www.townoftazewell.org/wp-content/gallery/misc/no-image-found.jpg></th>" + alm;
+        } else {
+            document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=" + poster + "></th>" + alm;
+        }
+
+        
 
         /*Bucle para obtener los datos del vector y mostrarlos en la segunda tabla */
         for (let i = 10; i < 19; i++) {
@@ -106,7 +116,7 @@ function apiCall(cont) {
         console.log(arrAll);
 
         var arrPaginas = Object.values(transform(cont).totalResults); //Guarda en un array los resultados totales
-        console.log(arrPaginas);
+        console.log(arrPaginas); //Muestra en consola el array
 
         /*Obtiene los resultados totales del array y los guarda en un string */
         var paginas = '';
@@ -115,21 +125,22 @@ function apiCall(cont) {
         });
 
         var numPaginas = parseInt(paginas); //Transforma el String en un Entero
-        console.log(numPaginas);
-        console.log(typeof (numPaginas));
+        console.log("Total resultados= " + numPaginas); // muestra en consola el numero de paginas
 
+        pages = (numPaginas/10);
+        console.log("Pagina totales# " + pages);
 
         /**********************Bucle para mostrar los enlaces de paginacion **********************/
-        var enlaces = '';
+        /*var enlaces = '';
         for (let e = 1; e <= numPaginas; e++) {
             enlaces += "<a>" + e + "</a>";
         }
-        document.getElementById("pagination").innerHTML = enlaces;
+        document.getElementById("pagination").innerHTML = enlaces;*/
 
 
         //Bucle For para mostrar los resultados en la Tabla
         var con = "";
-        for (var i = 0; i < 5; i++) {
+        for (var i = 0; i < arrAll.length; i++) {
             /*Condicional para sustituir una imagen vacia por otra, al cumplir la condicion cambia la imagen*/
             if (arrAll[i].Poster == "N/A") {
                 con +=
@@ -154,7 +165,39 @@ function apiCall(cont) {
                     "<tr><th>Type</th>" +
                     "<td>" + arrAll[i].Type + "</td></tr>";
             }
+            var movies = [i];
         }
+        console.log("Array Pelies " + movies);
         document.getElementById("moviesDetalles").innerHTML = con; //Muestra los resultados almacenados en la variable con, en formato HTML
+        /*Muestra las flechas de atras y adelante */
+        document.getElementById("pagination").innerHTML = "<a onclick='previous()' href='#animacion' class='flechas'><i class='fas fa-angle-double-left'></i></a>" + "<a onclick='next()' href='#animacion' class='flechas'> <i class='fas fa-angle-double-right'></i> </a>";
     }
 }
+
+/*FUNCION PARA OBTENER EL NUMERO ENTERO */
+function esEntero(){
+    if (pages % 1 == 0) {
+        console.log("Es un numero entero" + pages);
+        return pages;
+    } else {
+        console.log("Es un numero decimal" + pages);
+        return Math.floor(pages) + 1;
+    }
+}
+
+
+var i = 1;
+function next() {
+    if (i < esEntero()) {
+        i++;
+        console.log("Pagina numero** " + i);
+        apiCall(i);
+    }
+}
+function previous() {
+    if (i > 1) {
+        i--;
+        console.log("Pagina numero** " + i);
+        apiCall(i);
+    }
+}   
