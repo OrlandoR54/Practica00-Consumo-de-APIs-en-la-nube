@@ -3,9 +3,11 @@ body{
   }
    
 h1 {
-    font-size: 600%;
+    margin-top: 0px;
+    font-size: 96px;
     color: #E50913;
 }
+
 
 
 /*-----------------------------Buscador-----------------------------*/
@@ -78,12 +80,13 @@ h1 {
 img {
     border: 2px solid black;
     border-radius: 20px;
-    opacity: 0.5;
+    /*opacity: 0.5;*/
     transition: 0.25s ease-in-out;
+    width: 200px; height: 260px;
 }
 
 img:hover {
-    opacity: 1;
+    opacity: 2;
 }
 
 /*----------------------------------------------------------------------*/
@@ -95,6 +98,7 @@ td, th{
  th {
      width: 80px;
  }
+
 
 .tabla_1 td {
     width: 400px;
@@ -158,3 +162,24 @@ body::-webkit-scrollbar-thumb {
 	border-right: 2px solid #021b79;
 }*/
 /*------------------------------------------------------------------------*/
+.pagination {
+    display: inline-block;
+  }
+  
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+  
+.pagination a.active {
+    background-color: #E50913;
+    color: white;
+    border-radius: 5px;
+}
+  
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+    border-radius: 5px;
+}
