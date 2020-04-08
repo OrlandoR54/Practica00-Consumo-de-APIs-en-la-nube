@@ -3,38 +3,43 @@ function url() {
     var movie = document.getElementById("search").value; //Recupera el valor de entrada de la etiqueta input con id "search"
     movie = movie.toLowerCase();
     if (movie.length === 9 && movie.search('tt') === 0) {
-        getURL = "https://www.omdbapi.com/?apikey=99cef5c3&i=" + movie + "&plot=full"; //Concatena la url con el valor recuperado
+        getURL = "https://www.omdbapi.com/?apikey=99cef5c3&i=" + movie + "&plot=full&page="; //Concatena la url con el valor recuperado
         console.log(getURL, movie.search('tt'));
         return getURL; //Devuelve un valor String. Es la url completa
     } else {
-        getURL = "https://www.omdbapi.com/?apikey=99cef5c3&s=" + movie + "&plot=full"; //Concatena la url con el valor recuperado
+        getURL = "https://www.omdbapi.com/?apikey=99cef5c3&s=" + movie + "&plot=full&page="; //Concatena la url con el valor recuperado
         console.log(getURL);
         return getURL; //Devuelve un valor String. Es la url completa
     }
 }
 
-/*Funcion para obtener las consultas de varias peliculas */
-function apiCall() {
-    /////OBTIENE EL JSON DE LA URL
+
+/*FUNCION PARA OBTENER EL JSON DE LA URL*/
+function transform(cont) {
     //console.log(typeof (url())); //Tipo de dato de retorna la funcion url()
     var Httpreq = new XMLHttpRequest(); // a new request
-    Httpreq.open("GET", url(), false);
+    Httpreq.open("GET", url() + cont, false);
     Httpreq.send(null);
     var text = Httpreq.responseText; //Guarda el JSON en la variable text
 
     var obj = JSON.parse(text); //Al recibir datos de un servidor web, los datos siempre son un String. Con parse los datos se convierten en un objeto JavaScript.
+    return obj; //retorna el Objeto 
+    //console.log("ESTE ES EL JSON String: " + typeof (text));
+    console.log("Texto JSON " + text);
+    
+    //console.log("ESTE ES EL JSON OBJETO: " + typeof (obj));
+    //console.log("Objeto " + obj);
+}
 
-    console.log("ESTE ES EL JSON String: " + typeof (text));
 
-    console.log("ESTE ES EL JSON OBJETO: " + typeof (obj));
-    console.log("Objeto " + obj);
-
+/*Funcion para obtener las consultas de varias peliculas */
+function apiCall(cont) {
 
     /*Condicion para obtener los datos segun el ID o el nombre de la pelicula */
     console.log(url().search("i=")); //Obtiene la posicion de "i="
     if (url().search("i=") == 41) {
-        var arrCab = Object.getOwnPropertyNames(obj); //Obtiene y guarda los elementos del Objeto JSON, es decir las propiedades de los nombres del objeto
-        var arrDet = Object.values(obj); //Obtiene y guarda los resultados del objeto
+        var arrCab = Object.getOwnPropertyNames(transform(cont)); //Obtiene y guarda los elementos del Objeto JSON, es decir las propiedades de los nombres del objeto
+        var arrDet = Object.values(transform(cont)); //Obtiene y guarda los resultados del objeto
 
         console.log(arrDet); //Muestra en consola el vector donde estan los resultados del objeto JSON
         //console.log("Prueba vector: " + arrCab);
@@ -79,7 +84,7 @@ function apiCall() {
         }
         document.getElementById("moviesDetallesPart2").innerHTML = alm2;
 
-        /*Bucle para obtener los datos del vector y mostrarlos en la tercera tabla */
+        /*Bucle para obtener los datos de los vector y mostrarlos en la tercera tabla */
         for (let i = 19; i < 24; i++) {
             alm3 +=
                 "<tr><th>" + arrCab[i] + "</th>" +
@@ -88,19 +93,44 @@ function apiCall() {
         document.getElementById("moviesDetallesPart3").innerHTML = alm3;
         document.getElementById("moviesDetallesPart4").innerHTML = "<tr><th>" + arrCab[9] + "</th>" + "<td style='width: 800px; height: 50px;'>" + arrDet[9] + "</td></tr>";
 
+    } else if (url() === "https://www.omdbapi.com/?apikey=99cef5c3&s=&plot=full") {
+        alert("Ingrese lo que desea buscar"); //Muestra una alerta en caso de que se cumpla esta condicional
     } else {
 
         document.getElementById("tabla_2").innerHTML = "<tbody id='moviesDetallesPart2'> </tbody>"; //Limpia la cabecera y detalle de la segunda tabla
         document.getElementById("tabla_3").innerHTML = "<tbody id='moviesDetallesPart3'> </tbody>"; //Limpia la cabecera y detalle de la tercera tabla
+        document.getElementById("tabla_4").innerHTML = "<tbody id='moviesDetallesPart4'> </tbody>"; //Limpia la cabecera y detalle de la tercera tabla
 
-        var arrAll = Object.values(obj.Search);
+        console.log("funcion " + transform(cont));
+        var arrAll = Object.values(transform(cont).Search);
         console.log(arrAll);
+
+        var arrPaginas = Object.values(transform(cont).totalResults); //Guarda en un array los resultados totales
+        console.log(arrPaginas);
+
+        /*Obtiene los resultados totales del array y los guarda en un string */
+        var paginas = '';
+        arrPaginas.forEach(element => {
+            paginas += element;
+        });
+
+        var numPaginas = parseInt(paginas); //Transforma el String en un Entero
+        console.log(numPaginas);
+        console.log(typeof (numPaginas));
+
+
+        /**********************Bucle para mostrar los enlaces de paginacion **********************/
+        var enlaces = '';
+        for (let e = 1; e <= numPaginas; e++) {
+            enlaces += "<a>" + e + "</a>";
+        }
+        document.getElementById("pagination").innerHTML = enlaces;
 
 
         //Bucle For para mostrar los resultados en la Tabla
         var con = "";
-        for (var i = 0; i < arrAll.length; i++) {
-            /*Condicional para sustituir una imagen vacia por otra */
+        for (var i = 0; i < 5; i++) {
+            /*Condicional para sustituir una imagen vacia por otra, al cumplir la condicion cambia la imagen*/
             if (arrAll[i].Poster == "N/A") {
                 con +=
                     "<tr><th rowspan= '4'><img src='https://www.townoftazewell.org/wp-content/gallery/misc/no-image-found.jpg'></th>" +
