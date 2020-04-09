@@ -13,19 +13,12 @@
 
 # RESULTADO(S) OBTENIDO(S):
 
-### 1.	La arquitectura implementada en esta aplicación es de cliente-servidor
+### 1.	Identificar gráficamente la arquitectura y el patrón de diseño de la aplicación a desarrollar.
+La arquitectura implementada en esta aplicación es de cliente-servidor. La información atraviesa dos capas entre la interfaz y la administración de los datos.
 
 
 
-
-
-
-
-
-
-
-
-
+![](img/1.jpg)
 
 
 
