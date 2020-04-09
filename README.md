@@ -10,7 +10,8 @@
 #### 3. Crear un repositorio en GitHub con el nombre “Practica00 – Consumo de APIs en la nube”
 #### 4. Desarrollar una aplicación con HTML + CSS + Javascript + Web Services para buscar películas y toda su información de la base de datos de OMDb.
 #### 5. Realizar varios commits en la herramienta GitHub que demuestren el desarrollo de la aplicación.
-#RESULTADO(S) OBTENIDO(S):
+
+# RESULTADO(S) OBTENIDO(S):
 
 ### 1.	La arquitectura implementada en esta aplicación es de cliente-servidor
 
