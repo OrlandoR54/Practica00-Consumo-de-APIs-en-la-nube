@@ -14,7 +14,7 @@ ACTIVIDADES DESARROLLADAS
 5. Realizar varios commits en la herramienta GitHub que demuestren el desarrollo de la aplicación.
 RESULTADO(S) OBTENIDO(S):
 
-1.	La arquitectura implementada en esta aplicación es de cliente-servidor
+## 1.	La arquitectura implementada en esta aplicación es de cliente-servidor
 
 
 
@@ -43,7 +43,7 @@ RESULTADO(S) OBTENIDO(S):
 
 
 
-1)	La aplicación Web debe permitir buscar la información de las películas tanto por el nombre (listado) como por el código (id) de cada película.
+## 4.1)	La aplicación Web debe permitir buscar la información de las películas tanto por el nombre (listado) como por el código (id) de cada película.
 
 Función para obtener la URL. Condicional para retornar la URL para obtener los resultados por Título o ID.
 
@@ -78,13 +78,13 @@ Función donde transforma los datos que recoge de la URL entregada por la funci�
 
 
 
-2)	Además, se deberá visualizar toda la información disponible (plot=full) de la base de datos de películas.
+## 4.2)	Además, se deberá visualizar toda la información disponible (plot=full) de la base de datos de películas.
 
 Se muestra todos los detalles de la película según la ID. Si no dispone de información devuelve “Sin Información”
 
 ![](img/3.jpg)
 
-3)	También, la aplicación deberá presentar un máximo de 5 películas por búsqueda. Es decir, si la búsqueda retorna más de 5 películas se deberá paginar los resultados.
+## 4.3)	También, la aplicación deberá presentar un máximo de 5 películas por búsqueda. Es decir, si la búsqueda retorna más de 5 películas se deberá paginar los resultados.
 
 ![](img/4.jpg)
 
@@ -117,7 +117,7 @@ Se muestra todos los detalles de la película según la ID. Si no dispone de inf
 Bucle donde muestra toda la lista obtenida de JSON
 ![](img/5.jpg)
 
-4)	Por último, la interfaz gráfica de aplicada debe ser intuitiva y sencilla aplicando conceptos de experiencia de usuario (justificar en el informe).
+## 4.4)	Por último, la interfaz gráfica de aplicada debe ser intuitiva y sencilla aplicando conceptos de experiencia de usuario (justificar en el informe).
 
 ![](img/6.jpg)
 
@@ -126,4 +126,6 @@ Bucle donde muestra toda la lista obtenida de JSON
 
 CONCLUSIONES:
 Con el uso de las APIs se facilita la recuperación de datos sin necesidad de cargarlos en una pagina diferente sino de una forma eficaz, con el uso de Ajax la interacción del usuario se vuelve más intuitiva sin complicar la experiencia del usuario. 
+RECOMENDACIONES: Realizar el funcionamiento de servicio web y y dejar al último el diseño de interfaz ya que eso no modifica el funcionamiento de la página web.
+
 RECOMENDACIONES: Realizar el funcionamiento de servicio web y y dejar al último el diseño de interfaz ya que eso no modifica el funcionamiento de la página web.
