@@ -1,8 +1,10 @@
 # Practica00-Consumo-de-APIs-en-la-nube
 
 # TÍTULO PRÁCTICA: Desarrollo de una aplicación web utilizando la API de la base de datos de películas OMDB
-# OBJETIVO ALCANZADO: Establecer un patrón arquitectónico, y desarrollar una aplicación web.
-# ACTIVIDADES DESARROLLADAS
+
+## OBJETIVO ALCANZADO: Establecer un patrón arquitectónico, y desarrollar una aplicación web.
+
+## ACTIVIDADES DESARROLLADAS
 #### 1. Identificar gráficamente la arquitectura y el patrón de diseño de la aplicación a desarrollar.
 #### 2. Generar una llave para consumir los servicios web de la API de OMDb.
 #### 3. Crear un repositorio en GitHub con el nombre “Practica00 – Consumo de APIs en la nube”
@@ -10,7 +12,7 @@
 #### 5. Realizar varios commits en la herramienta GitHub que demuestren el desarrollo de la aplicación.
 #RESULTADO(S) OBTENIDO(S):
 
-## 1.	La arquitectura implementada en esta aplicación es de cliente-servidor
+### 1.	La arquitectura implementada en esta aplicación es de cliente-servidor
 
 
 
@@ -27,7 +29,7 @@
 
 
 
-## 4.1)	La aplicación Web debe permitir buscar la información de las películas tanto por el nombre (listado) como por el código (id) de cada película.
+### 4.1)	La aplicación Web debe permitir buscar la información de las películas tanto por el nombre (listado) como por el código (id) de cada película.
 
 Función para obtener la URL. Condicional para retornar la URL para obtener los resultados por Título o ID.
 
@@ -41,13 +43,13 @@ Función donde transforma los datos que recoge de la URL entregada por la funci�
 
 
 
-## 4.2)	Además, se deberá visualizar toda la información disponible (plot=full) de la base de datos de películas.
+### 4.2)	Además, se deberá visualizar toda la información disponible (plot=full) de la base de datos de películas.
 
 Se muestra todos los detalles de la película según la ID. Si no dispone de información devuelve “Sin Información”
 
 ![](img/3.jpg)
 
-## 4.3)	También, la aplicación deberá presentar un máximo de 5 películas por búsqueda. Es decir, si la búsqueda retorna más de 5 películas se deberá paginar los resultados.
+### 4.3)	También, la aplicación deberá presentar un máximo de 5 películas por búsqueda. Es decir, si la búsqueda retorna más de 5 películas se deberá paginar los resultados.
 
 ![](img/4.jpg)
 
@@ -57,7 +59,7 @@ Se muestra todos los detalles de la película según la ID. Si no dispone de inf
 Bucle donde muestra toda la lista obtenida de JSON
 ![](img/5.jpg)
 
-## 4.4)	Por último, la interfaz gráfica de aplicada debe ser intuitiva y sencilla aplicando conceptos de experiencia de usuario (justificar en el informe).
+### 4.4)	Por último, la interfaz gráfica de aplicada debe ser intuitiva y sencilla aplicando conceptos de experiencia de usuario (justificar en el informe).
 
 ![](img/6.jpg)
 
