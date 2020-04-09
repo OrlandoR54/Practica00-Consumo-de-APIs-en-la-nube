@@ -8,7 +8,9 @@ h1 {
     color: #E50913;
 }
 
-
+center p{
+    color:  blanchedalmond;
+}
 
 /*-----------------------------Buscador-----------------------------*/
 .container-4 input#search{
@@ -97,8 +99,17 @@ td, th{
 
  th {
      width: 80px;
+     color: #D80812;
  }
 
+ td{
+    color: #D9C6C2;
+ }
+
+ tr:hover{
+    opacity: 0.5;
+    
+ }
 
 .tabla_1 td {
     width: 400px;
