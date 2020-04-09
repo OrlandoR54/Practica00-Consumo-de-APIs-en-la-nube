@@ -18,7 +18,7 @@ La arquitectura implementada en esta aplicación es de cliente-servidor. La info
 
 
 
-![](img/1.jpg)
+![](img/1.PNG)
 
 
 
