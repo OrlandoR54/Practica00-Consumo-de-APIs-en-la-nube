@@ -16,11 +16,7 @@
 ### 1.	Identificar gráficamente la arquitectura y el patrón de diseño de la aplicación a desarrollar.
 La arquitectura implementada en esta aplicación es de cliente-servidor. La información atraviesa dos capas entre la interfaz y la administración de los datos.
 
-
-
 ![](img/1.png)
-
-
 
 
 ### 4.1)	La aplicación Web debe permitir buscar la información de las películas tanto por el nombre (listado) como por el código (id) de cada película.
@@ -30,11 +26,9 @@ Función para obtener la URL. Condicional para retornar la URL para obtener los 
 ![](img/url.jpg)
 
 
-
 Función donde transforma los datos que recoge de la URL entregada por la función anterior, los guarda en una variable de tipo String. Al recibir datos de un servidor web, los datos siempre son un String, con la función parse los datos se convierten en un objeto JavaScript.
 
 ![](img/2.jpg)
-
 
 
 ### 4.2)	Además, se deberá visualizar toda la información disponible (plot=full) de la base de datos de películas.
@@ -48,15 +42,12 @@ Se muestra todos los detalles de la película según la ID. Si no dispone de inf
 ![](img/4.jpg)
 
 
-
-
 Bucle donde muestra toda la lista obtenida de JSON
 ![](img/5.jpg)
 
 ### 4.4)	Por último, la interfaz gráfica de aplicada debe ser intuitiva y sencilla aplicando conceptos de experiencia de usuario (justificar en el informe).
 
 ![](img/6.jpg)
-
 
 
 # CONCLUSIONES:
