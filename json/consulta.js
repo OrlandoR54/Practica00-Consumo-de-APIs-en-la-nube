@@ -186,7 +186,7 @@ function apiCall(cont) {
                     "<tr><th>Type</th>" +
                     "<td>" + arrAll[i].Type + "</td></tr>";
             }
-            var movies = [i];
+            //var movies = [i];
         }
         console.log("Array Pelies " + movies);
         document.getElementById("moviesDetalles").innerHTML = con; //Muestra los resultados almacenados en la variable con, en formato HTML
