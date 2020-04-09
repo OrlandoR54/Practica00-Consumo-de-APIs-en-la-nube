@@ -70,4 +70,5 @@ Bucle donde muestra toda la lista obtenida de JSON
 Con el uso de las APIs se facilita la recuperación de datos sin necesidad de cargarlos en una pagina diferente sino de una forma eficaz, con el uso de Ajax la interacción del usuario se vuelve más intuitiva sin complicar la experiencia del usuario. 
 RECOMENDACIONES: Realizar el funcionamiento de servicio web y y dejar al último el diseño de interfaz ya que eso no modifica el funcionamiento de la página web.
 
-# RECOMENDACIONES: Realizar el funcionamiento de servicio web y y dejar al último el diseño de interfaz ya que eso no modifica el funcionamiento de la página web.
+# RECOMENDACIONES: 
+Realizar el funcionamiento de servicio web y y dejar al último el diseño de interfaz ya que eso no modifica el funcionamiento de la página web.
