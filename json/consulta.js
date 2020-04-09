@@ -43,7 +43,6 @@ function apiCall(cont) {
         var arrDet = Object.values(transform(cont)); //Obtiene y guarda los resultados del objeto
 
         console.log(arrDet); //Muestra en consola el vector donde estan los resultados del objeto JSON
-        //console.log("Prueba vector: " + arrCab);
 
         document.getElementById("pagination").innerHTML = " ";
 
@@ -51,12 +50,10 @@ function apiCall(cont) {
         var alm2 = "";
         var alm3 = "";
 
-
         // console.log("Vector prueba.... " + arrDet);
 
         var poster = arrDet[13]; //obtiene el dato de la imagen en la posicion 13 y lo guarda
         var ratings = arrDet[14];
-
 
         /*Bucle para obtener los datos del vector y mostrarlos en la primera tabla */
         for (let i = 0; i < 9; i++) {
@@ -69,14 +66,12 @@ function apiCall(cont) {
                     "<th>" + arrCab[i] + "</th>" +
                     "<td>" + arrDet[i] + "</td></tr>";
             }
-
         }
         if (arrDet[13] == "N/A") {
             document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=https://www.townoftazewell.org/wp-content/gallery/misc/no-image-found.jpg></th>" + alm;
         } else {
             document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=" + poster + "></th>" + alm;
         }
-
 
 
         /*Bucle para obtener los datos del vector y mostrarlos en la segunda tabla */
@@ -98,7 +93,6 @@ function apiCall(cont) {
                             "<tr><th>Value</th>" +
                             "<td>" + ratings[i].Value + "</td></tr>";
                     }
-
                 }
                 alm2 += "</tr>"
             } else {
@@ -126,7 +120,6 @@ function apiCall(cont) {
                     "<tr><th>" + arrCab[i] + "</th>" +
                     "<td>" + arrDet[i] + "</td></tr>";
             }
-
         }
         document.getElementById("moviesDetallesPart3").innerHTML = alm3;
         document.getElementById("moviesDetallesPart4").innerHTML = "<tr><th>" + arrCab[9] + "</th>" + "<td style='width: 800px; height: 50px;'>" + arrDet[9] + "</td></tr>";
