@@ -47,7 +47,7 @@ RESULTADO(S) OBTENIDO(S):
 
 Función para obtener la URL. Condicional para retornar la URL para obtener los resultados por Título o ID.
 
-![](img/url.PNG)
+![](img/url.jpg)
 
 
 
