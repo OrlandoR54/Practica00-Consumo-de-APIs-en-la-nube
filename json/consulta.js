@@ -188,7 +188,7 @@ function apiCall(cont) {
             }
             //var movies = [i];
         }
-        console.log("Array Pelies " + movies);
+        
         document.getElementById("moviesDetalles").innerHTML = con; //Muestra los resultados almacenados en la variable con, en formato HTML
         /*Muestra las flechas de atras y adelante */
         document.getElementById("pagination").innerHTML = "<a onclick='previous()' href='#animacion' class='flechas'><i class='fas fa-angle-double-left'></i></a>" + "<a onclick='next()' href='#animacion' class='flechas'> <i class='fas fa-angle-double-right'></i> </a>";
