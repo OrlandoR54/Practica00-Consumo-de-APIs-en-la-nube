@@ -26,7 +26,7 @@ function transform(cont) {
     return obj; //retorna el Objeto 
     //console.log("ESTE ES EL JSON String: " + typeof (text));
     console.log("Texto JSON " + text);
-    
+
     //console.log("ESTE ES EL JSON OBJETO: " + typeof (obj));
     //console.log("Objeto " + obj);
 }
@@ -51,18 +51,25 @@ function apiCall(cont) {
         var alm2 = "";
         var alm3 = "";
 
-        
+
         // console.log("Vector prueba.... " + arrDet);
-        
+
         var poster = arrDet[13]; //obtiene el dato de la imagen en la posicion 13 y lo guarda
         var ratings = arrDet[14];
 
-            
+
         /*Bucle para obtener los datos del vector y mostrarlos en la primera tabla */
         for (let i = 0; i < 9; i++) {
-            alm +=
-                "<th>" + arrCab[i] + "</th>" +
-                "<td>" + arrDet[i] + "</td></tr>";
+            if (arrDet[i] == "N/A") {
+                alm +=
+                    "<th>" + arrCab[i] + "</th>" +
+                    "<td>Sin Informacion</td></tr>";
+            } else {
+                alm +=
+                    "<th>" + arrCab[i] + "</th>" +
+                    "<td>" + arrDet[i] + "</td></tr>";
+            }
+
         }
         if (arrDet[13] == "N/A") {
             document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=https://www.townoftazewell.org/wp-content/gallery/misc/no-image-found.jpg></th>" + alm;
@@ -70,7 +77,7 @@ function apiCall(cont) {
             document.getElementById("moviesDetalles").innerHTML = "<tr> <th rowspan='9'><img src=" + poster + "></th>" + alm;
         }
 
-        
+
 
         /*Bucle para obtener los datos del vector y mostrarlos en la segunda tabla */
         for (let i = 10; i < 19; i++) {
@@ -79,26 +86,47 @@ function apiCall(cont) {
             } else if (arrDet[i] === ratings) {
                 alm2 += "<tr><th rowspan='" + (((ratings.length) * 2) + 1) + "'>Ratings</th>";
                 for (let i = 0; i < ratings.length; i++) {
-                    alm2 +=
+                    if (ratings[i] == "N/A") {
                         "<tr><th>Source</th>" +
-                        "<td>" + ratings[i].Source + "</td></tr>" +
-                        "<tr><th>Value</th>" +
-                        "<td>" + ratings[i].Value + "</td></tr>";
+                            "<td>Sin Informacion</td></tr>" +
+                            "<tr><th>Value</th>" +
+                            "<td>Sin Informacion</td></tr>";
+                    } else {
+                        alm2 +=
+                            "<tr><th>Source</th>" +
+                            "<td>" + ratings[i].Source + "</td></tr>" +
+                            "<tr><th>Value</th>" +
+                            "<td>" + ratings[i].Value + "</td></tr>";
+                    }
+
                 }
                 alm2 += "</tr>"
             } else {
-                alm2 +=
-                    "<tr><th>" + arrCab[i] + "</th>" +
-                    "<td>" + arrDet[i] + "</td></tr>";
+                if (arrDet[i] == "N/A") {
+                    alm2 +=
+                        "<tr><th>" + arrCab[i] + "</th>" +
+                        "<td>Sin Informacion</td></tr>";
+                } else {
+                    alm2 +=
+                        "<tr><th>" + arrCab[i] + "</th>" +
+                        "<td>" + arrDet[i] + "</td></tr>";
+                }
             }
         }
         document.getElementById("moviesDetallesPart2").innerHTML = alm2;
 
         /*Bucle para obtener los datos de los vector y mostrarlos en la tercera tabla */
         for (let i = 19; i < 24; i++) {
-            alm3 +=
-                "<tr><th>" + arrCab[i] + "</th>" +
-                "<td>" + arrDet[i] + "</td></tr>";
+            if (arrDet[i] == "N/A") {
+                alm3 +=
+                    "<tr><th>" + arrCab[i] + "</th>" +
+                    "<td>Sin Informacion</td></tr>";
+            } else {
+                alm3 +=
+                    "<tr><th>" + arrCab[i] + "</th>" +
+                    "<td>" + arrDet[i] + "</td></tr>";
+            }
+
         }
         document.getElementById("moviesDetallesPart3").innerHTML = alm3;
         document.getElementById("moviesDetallesPart4").innerHTML = "<tr><th>" + arrCab[9] + "</th>" + "<td style='width: 800px; height: 50px;'>" + arrDet[9] + "</td></tr>";
@@ -127,7 +155,7 @@ function apiCall(cont) {
         var numPaginas = parseInt(paginas); //Transforma el String en un Entero
         console.log("Total resultados= " + numPaginas); // muestra en consola el numero de paginas
 
-        pages = (numPaginas/10);
+        pages = (numPaginas / 10);
         console.log("Pagina totales# " + pages);
 
         /**********************Bucle para mostrar los enlaces de paginacion **********************/
@@ -175,7 +203,7 @@ function apiCall(cont) {
 }
 
 /*FUNCION PARA OBTENER EL NUMERO ENTERO */
-function esEntero(){
+function esEntero() {
     if (pages % 1 == 0) {
         console.log("Es un numero entero" + pages);
         return pages;
