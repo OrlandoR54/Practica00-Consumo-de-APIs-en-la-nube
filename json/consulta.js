@@ -122,7 +122,12 @@ function apiCall(cont) {
             }
         }
         document.getElementById("moviesDetallesPart3").innerHTML = alm3;
-        document.getElementById("moviesDetallesPart4").innerHTML = "<tr><th>" + arrCab[9] + "</th>" + "<td style='width: 800px; height: 50px;'>" + arrDet[9] + "</td></tr>";
+        if (arrDet[9] == "N/A") {
+            document.getElementById("moviesDetallesPart4").innerHTML = "<tr><th>" + arrCab[9] + "</th>" + "<td style='width: 800px; height: 50px;'>Sin informacion</td></tr>";
+        } else {
+            document.getElementById("moviesDetallesPart4").innerHTML = "<tr><th>" + arrCab[9] + "</th>" + "<td style='width: 800px; height: 50px;'>" + arrDet[9] + "</td></tr>";
+        }
+        
 
     } else if (url() === "https://www.omdbapi.com/?apikey=99cef5c3&s=&plot=full") {
         alert("Ingrese lo que desea buscar"); //Muestra una alerta en caso de que se cumpla esta condicional
@@ -161,7 +166,7 @@ function apiCall(cont) {
 
         //Bucle For para mostrar los resultados en la Tabla
         var con = "";
-        for (var i = 0; i < arrAll.length; i++) {
+        for (var i = 0; i < 5; i++) {
             /*Condicional para sustituir una imagen vacia por otra, al cumplir la condicion cambia la imagen*/
             if (arrAll[i].Poster == "N/A") {
                 con +=
